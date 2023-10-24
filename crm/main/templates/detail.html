@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+{% block title %}
+  {{team.name}} jamoasining davomadi
+{% endblock title %}
+{% block content %}
+ <div class='container mt-3'>
+    <div class="card mt-3">
+        <h3 class='m-3'>{{team.name}} jamoasining davomadi</h3>
+
+        <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th scope="col">Firstname and lastname</th>
+                {% for mark in team.workers.first.marks.all %}
+                 <th style="writing-mode:vertical-rl; text-orientation:mixed" scope="col">{{mark.attendance.date|date:"Y-m-d"}}</th>
+                {% endfor %}
+              </tr>
+            </thead>
+            <tbody>
+              {% for worker in team.workers.all %}
+              <tr>
+                <td>{{worker.first_name}} {{worker.last_name}}</td>
+                {% for mark in worker.marks.all %}
+                  {% if mark.is_attended %}
+                      <td style='height:5px; width:5px;'></td>
+                  {% else %}
+                      <td style='height:5px; width:5px; background-color:black;'></td>
+                  {% endif %}
+                  <td>{{mark.is_attended}}</td>
+                {% endfor %}
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+    </div>
+ </div>
+{% endblock content %}
+
+27Ж17

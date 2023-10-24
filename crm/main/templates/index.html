@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block title %}Bosh sahifa{% endblock title %}
+{% block content %}
+ <div class='container mt-3'>
+   <ul>
+    {% for team in teams %}
+       <li>
+         <a href="">{{team.name}}</a>
+       </li>
+    {% endfor %}
+   </ul>
+ </div>
+{% endblock content %}
